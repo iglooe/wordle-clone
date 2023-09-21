@@ -5,7 +5,7 @@ import { useState } from "react";
 const useWordle = (solution) => {
   const [turn, setTurn] = useState(0);
   const [currentGuess, setCurrentGuess] = useState("");
-  const [guesses, setGuesses] = useState([]); // each guess is an array
+  const [guesses, setGuesses] = useState([...Array(6)]); // each guess is an array
   const [history, setHistory] = useState(["ninja"]); // each guess is a string
   const [isCorrect, setIsCorrect] = useState(false);
 
@@ -39,7 +39,21 @@ const useWordle = (solution) => {
   // add new guess to the guesses state
   // update the icCorrect state if the guess is correct
   // add one to the turn state
-  const addNewGuess = () => {};
+  const addNewGuess = (formattedGuess) => {
+    if (currentGuess === solution) {
+      setIsCorrect(true);
+      console.log("You won!");
+    }
+
+    setGuesses((prev) => {
+      const newGuesses = [...prev];
+      newGuesses[turn] = formattedGuess;
+      return newGuesses;
+    });
+    setHistory((prev) => [...prev, currentGuess]);
+    setTurn((n) => n + 1);
+    setCurrentGuess("");
+  };
 
   //handle keyup even & track current guess
   // if user presses enter, add the new guess
@@ -76,7 +90,7 @@ const useWordle = (solution) => {
       }
 
       const formatted = formatGuess();
-      console.log(formatted);
+      addNewGuess(formatted);
     }
   };
 

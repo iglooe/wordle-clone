@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <>
       <div className="flex items-center justify-center p-4">
-        <h1>Wordle</h1>
+        <h1 className="text-2xl font-extrabold">Wordle</h1>
       </div>
       <div className="p-4 border-t border-slate-950/20">
         {solution && <Wordle solution={solution} />}
