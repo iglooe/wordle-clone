@@ -20,10 +20,9 @@ function MenuIcon() {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="feather feather-menu"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <line x1="3" y1="12" x2="21" y2="12"></line>
       <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -39,18 +38,105 @@ export default function Menu() {
         <MenuIcon />
       </PopoverTrigger>
       <PopoverContent>
-        <Link href="/about" className="font-2xl hover:underline">
+        <div className="text-2xl font-bold text-current cursor-default selection:text-black dark:selection:text-white selection:bg-lime-500">
           About
-        </Link>
+        </div>
         <div className="pt-4 text-sm">
           <Separator />
-          <div className="flex mt-4 leading-loose text-left txt-sm text-muted-foreground">
+          <div className="pt-2 pb-3 selection:bg-lime-500">
+            <p className="pb-2 tracking-tightest">
+              <span className="font-bold">Birdle</span> is an open-source Wordle
+              clone made with everything new in{" "}
+              <Link
+                className="font-bold transition-colors cursor-pointer hover:underline hover:text-foreground"
+                href="https://nextjs.org/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Next.JS 13
+              </Link>
+              .
+            </p>
+            <p className="tracking-tightest">
+              Join me in the world of words, challenge your vocabulary, and have
+              fun guessing the hidden word in my take on the classic game
+              Wordle!
+            </p>
+          </div>
+          {/* <Separator className="mb-2" /> */}
+          <div className="text-2xl font-bold text-current cursor-default selection:bg-lime-500 selection:text-black dark:selection:text-whit">
+            Tech Stack Used
+          </div>
+          <div className="pt-4">
+            <Separator />
+            <div className="pt-4 pl-4">
+              <ul className="list-disc">
+                <li className="pb-1">
+                  <Link
+                    className="font-bold transition-colors cursor-pointer hover:underline hover:text-foreground"
+                    href="https://nextjs.org/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Next.JS 13
+                  </Link>
+                  <span className="pl-1 text-sm text-muted-foreground">
+                    - framework
+                  </span>
+                </li>
+                <li className="pb-1">
+                  <Link
+                    className="font-bold transition-colors cursor-pointer hover:underline hover:text-foreground"
+                    href="https://tailwindcss.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    TailwindCSS
+                  </Link>
+                  <span className="pl-1 text-sm text-muted-foreground">
+                    {" "}
+                    - styling
+                  </span>
+                </li>
+                <li className="pb-1">
+                  <Link
+                    className="font-bold transition-colors cursor-pointer hover:underline hover:text-foreground"
+                    href="https://ui.shadcn.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    shadcn/ui
+                  </Link>
+                  <span className="pl-1 text-sm text-muted-foreground">
+                    {" "}
+                    - UI components
+                  </span>
+                </li>
+                <li className="pb-1">
+                  <Link
+                    className="font-bold transition-colors cursor-pointer hover:underline hover:text-foreground"
+                    href="https://sonner.emilkowal.ski/https://tailwindcss.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Sonner
+                  </Link>
+                  <span className="pl-1 text-sm text-muted-foreground">
+                    - toast notifications
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <Separator className="mt-2" />
+          <div className="flex items-center pt-1 text-sm leading-loose text-left text-muted-foreground selection-text-black dark:selection:text-white selection:bg-lime-500">
             Built by{" "}
             <Link
               href="https://github.com/iglooe"
               target="_blank"
               rel="noreferrer"
-              className="font-semibold transition-colors hover:underline hover:text-foreground"
+              className="ml-1 font-semibold transition-colors hover:underline text-amber-500 hover:text-foreground"
             >
               Derek<span className="sr-only">Github</span>
             </Link>
@@ -68,6 +154,7 @@ export default function Menu() {
                 )}
               >
                 <Github className="inline-block w-6 h-6 text-right" />
+                <span className="sr-only"></span>
               </Link>
             </div>
           </div>

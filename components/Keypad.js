@@ -27,8 +27,6 @@ export default function Keypad({ usedKeys }) {
     return chunkedArray;
   }
 
-  console.log(usedKeys);
-
   return (
     <div className="flex flex-col items-center mt-12 space-y-4">
       {rows.map((row, rowIndex) => (
@@ -38,7 +36,7 @@ export default function Keypad({ usedKeys }) {
             console.log(color);
             return (
               <div
-                className={`${color} flex uppercase items-center justify-center w-8 h-10 text-lg font-semibold border rounded-md cursor-pointer hover:bg-gray-200`}
+                className={`${color} selection:bg-lime-300 flex uppercase items-center justify-center w-11 h-14 dark:hover:text-black text-lg font-semibold border rounded-md cursor-default hover:bg-gray-200`}
                 key={letter.key}
               >
                 {letter.key}

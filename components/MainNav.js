@@ -12,7 +12,7 @@ export default function MainNav() {
           <div className="flex items-center mr-auto space-x-4">
             <Menu />
           </div>
-          <h1 className="text-3xl font-bold">Wordle</h1>
+          <h1 className="text-3xl font-bold">Birdle</h1>
           <div className="flex items-center ml-auto space-x-4">
             <ModeToggle />
           </div>
