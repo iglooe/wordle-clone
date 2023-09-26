@@ -8,7 +8,7 @@ export default function Row({ guess, currentGuess }) {
           {guess.map((l, i) => {
             return (
               <div
-                className={`${l.color} block items-center pt-1 w-[60px] h-[60px] border border-slate-500 m-2 text-center uppercase font-semibold text-5xl text-zinc-950/75`}
+                className={`${l.color} block items-center pt-1 w-[60px] h-[60px] border border-zinc-500 m-2 text-center uppercase font-semibold text-5xl text-zinc-950/75`}
                 key={i}
               >
                 {l.key}
@@ -23,11 +23,11 @@ export default function Row({ guess, currentGuess }) {
     let letters = currentGuess.split("");
 
     return (
-      <div className="flex justify-center text-center current">
+      <div className="flex justify-center text-center">
         {letters.map((letter, i) => (
           <div
             key={i}
-            className="bg-zinc-100/20 block items-center pt-1 w-[60px] h-[60px] border border-slate-500 m-2 text-center uppercase font-semibold text-5xl text-zinc-700"
+            className="bg-zinc-100/20 block items-center pt-1 w-[60px] h-[60px] border border-zinc-500 m-2 text-center uppercase font-semibold text-5xl text-zinc-700"
           >
             {letter}
           </div>
@@ -38,7 +38,7 @@ export default function Row({ guess, currentGuess }) {
         */}
         {[...Array(5 - letters.length)].map((_, i) => (
           <div
-            className="block w-[60px] h-[60px] border border-slate-500/35 m-2 text-center uppercase bold text-5xl"
+            className="block w-[60px] h-[60px] border border-zinc-500/45 m-2 text-center uppercase bold text-5xl"
             key={i}
           ></div>
         ))}
@@ -48,11 +48,11 @@ export default function Row({ guess, currentGuess }) {
 
   return (
     <div className="flex justify-center text-center">
-      <div className="block w-[60px] h-[60px] border border-slate-500/25 m-2 text-center uppercase bold text-5xl"></div>
-      <div className="block w-[60px] h-[60px] border border-slate-500/25 m-2 text-center uppercase bold text-5xl"></div>
-      <div className="block w-[60px] h-[60px] border border-slate-500/25 m-2 text-center uppercase bold text-5xl"></div>
-      <div className="block w-[60px] h-[60px] border border-slate-500/25 m-2 text-center uppercase bold text-5xl"></div>
-      <div className="block w-[60px] h-[60px] border border-slate-500/25 m-2 text-center uppercase bold text-5xl"></div>
+      <div className="block w-[60px] h-[60px] border border-zinc-500/45 m-2 text-center uppercase bold text-5xl"></div>
+      <div className="block w-[60px] h-[60px] border border-zinc-500/45 m-2 text-center uppercase bold text-5xl"></div>
+      <div className="block w-[60px] h-[60px] border border-zinc-500/45 m-2 text-center uppercase bold text-5xl"></div>
+      <div className="block w-[60px] h-[60px] border border-zinc-500/45 m-2 text-center uppercase bold text-5xl"></div>
+      <div className="block w-[60px] h-[60px] border border-zinc-500/45 m-2 text-center uppercase bold text-5xl"></div>
     </div>
   );
 }

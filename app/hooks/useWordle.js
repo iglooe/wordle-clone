@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { toast } from "sonner";
 
 const useWordle = (solution) => {
   const [turn, setTurn] = useState(0);
@@ -42,7 +43,7 @@ const useWordle = (solution) => {
   const addNewGuess = (formattedGuess) => {
     if (currentGuess === solution) {
       setIsCorrect(true);
-      console.log("You won!");
+      toast.success("You won!");
     }
 
     setGuesses((prev) => {
@@ -73,19 +74,19 @@ const useWordle = (solution) => {
     if (key === "Enter") {
       // no turns past 5
       if (turn > 5) {
-        console.log("You lost!");
+        toast("Refresh to play again!");
         return;
       }
 
       // do not allow duplicate guesses
       if (history.includes(currentGuess)) {
-        console.log("You already guessed that!");
+        toast.error("You already guessed that!");
         return;
       }
 
       // do not allow guesses that are not 5 letters
       if (currentGuess.length !== 5) {
-        console.log("Guess must be 5 letters!");
+        toast.error("Guess must be 5 letters!");
         return;
       }
 
