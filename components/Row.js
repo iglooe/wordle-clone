@@ -8,7 +8,7 @@ export default function Row({ guess, currentGuess }) {
           {guess.map((letter, index) => {
             return (
               <div
-                className={`${letter.color} block items-center pt-1 w-[60px] h-[60px] border border-zinc-500 m-2 text-center uppercase font-semibold text-5xl text-zinc-950/75`}
+                className={`${letter.color} dark:text-white block items-center pt-1 w-[60px] h-[60px] border border-zinc-500 m-2 text-center uppercase font-semibold text-5xl text-zinc-950/75`}
                 key={index}
               >
                 {letter.key}
@@ -27,7 +27,7 @@ export default function Row({ guess, currentGuess }) {
         {letters.map((letter, index) => (
           <div
             key={index}
-            className="bg-zinc-100/20 block items-center pt-1 w-[60px] h-[60px] border border-zinc-500 m-2 text-center uppercase font-semibold text-5xl text-zinc-700"
+            className="bg-zinc-100/20 dark:bg-zinc-400/20 dark:text-white block items-center pt-1 w-[60px] h-[60px] border border-zinc-500 m-2 text-center uppercase font-semibold text-5xl text-zinc-700"
           >
             {letter}
           </div>

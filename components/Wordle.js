@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 
-import Grid from "@/app/components/Grid";
+import Grid from "@/components/Grid";
 import useWordle from "@/app/hooks/useWordle";
-import Keypad from "@/app/components/Keypad";
+import Keypad from "@/components/Keypad";
 
 export default function Wordle({ solution }) {
   const { currentGuess, handleKeyUp, guesses, isCorrect, turn, usedKeys } =

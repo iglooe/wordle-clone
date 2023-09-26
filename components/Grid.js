@@ -1,6 +1,6 @@
 import React from "react";
 
-import Row from "@/app/components/Row";
+import Row from "@/components/Row";
 
 export default function Grid({ currentGuess, turn, guesses }) {
   return (

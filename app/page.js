@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import { Toaster } from "sonner";
 
-import Wordle from "@/app/components/Wordle";
+import Wordle from "@/components/Wordle";
+import MainNav from "@/components/MainNav";
 
 export default function Home() {
   const [solution, setSolution] = useState(null);
@@ -20,13 +21,9 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex items-center justify-center p-4">
-        <h1 className="text-2xl font-extrabold">Wordle</h1>
-      </div>
+      <MainNav />
       <Toaster position="top-center" richColors />
-      <div className="p-4 border-t border-slate-950/20">
-        {solution && <Wordle solution={solution} />}
-      </div>
+      <div className="p-4">{solution && <Wordle solution={solution} />}</div>
     </>
   );
 }

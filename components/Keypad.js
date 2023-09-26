@@ -38,7 +38,7 @@ export default function Keypad({ usedKeys }) {
             console.log(color);
             return (
               <div
-                className={`${color} flex items-center justify-center w-8 h-10 text-lg font-semibold border rounded-md cursor-pointer hover:bg-gray-200`}
+                className={`${color} flex uppercase items-center justify-center w-8 h-10 text-lg font-semibold border rounded-md cursor-pointer hover:bg-gray-200`}
                 key={letter.key}
               >
                 {letter.key}
