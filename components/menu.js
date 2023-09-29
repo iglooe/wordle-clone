@@ -64,12 +64,12 @@ export default function Menu() {
             </p>
           </div>
           {/* <Separator className="mb-2" /> */}
-          <div className="text-2xl font-bold text-current cursor-default selection:bg-lime-500 selection:text-black dark:selection:text-whit">
+          <div className="text-2xl font-bold text-current cursor-default selection:bg-lime-500 selection:text-black dark:selection:text-white">
             Tech Stack Used
           </div>
           <div className="pt-4">
             <Separator />
-            <div className="pt-4 pl-4">
+            <div className="pt-4 pl-4 selection:bg-lime-500">
               <ul className="list-disc">
                 <li className="pb-1">
                   <Link
@@ -80,7 +80,7 @@ export default function Menu() {
                   >
                     Next.JS 13
                   </Link>
-                  <span className="pl-1 text-sm text-muted-foreground">
+                  <span className="pl-1 text-sm text-muted-foreground selection:text-black">
                     - framework
                   </span>
                 </li>
@@ -93,7 +93,7 @@ export default function Menu() {
                   >
                     TailwindCSS
                   </Link>
-                  <span className="pl-1 text-sm text-muted-foreground">
+                  <span className="pl-1 text-sm text-muted-foreground selection:text-black">
                     {" "}
                     - styling
                   </span>
@@ -107,7 +107,7 @@ export default function Menu() {
                   >
                     shadcn/ui
                   </Link>
-                  <span className="pl-1 text-sm text-muted-foreground">
+                  <span className="pl-1 text-sm text-muted-foreground selection:text-black">
                     {" "}
                     - UI components
                   </span>
@@ -121,7 +121,7 @@ export default function Menu() {
                   >
                     Sonner
                   </Link>
-                  <span className="pl-1 text-sm text-muted-foreground">
+                  <span className="pl-1 text-sm text-muted-foreground selection:text-black">
                     - toast notifications
                   </span>
                 </li>
@@ -136,7 +136,7 @@ export default function Menu() {
               href="https://github.com/iglooe"
               target="_blank"
               rel="noreferrer"
-              className="ml-1 font-semibold transition-colors hover:underline text-amber-500 hover:text-foreground"
+              className="ml-1 font-semibold transition-colors hover:underline dark:text-amber-500 text-amber-600 selection:text-black hover:text-foreground"
             >
               Derek<span className="sr-only">Github</span>
             </Link>
