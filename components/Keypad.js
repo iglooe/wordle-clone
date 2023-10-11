@@ -4,7 +4,7 @@ export default function Keypad({ usedKeys }) {
   const [letters, setLetters] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3001/letters")
+    fetch("https://busy-gold-antelope-wear.cyclic.app/letters")
       .then((res) => res.json())
       .then((json) => {
         setLetters(json);
@@ -30,13 +30,12 @@ export default function Keypad({ usedKeys }) {
   return (
     <div className="flex flex-col items-center mt-12 space-y-4">
       {rows.map((row, rowIndex) => (
-        <div key={rowIndex} className="flex items-center gap-3 keypad">
+        <div key={rowIndex} className="flex items-center gap-2 md:gap-3">
           {row.map((letter) => {
             const color = usedKeys[letter.key];
-            console.log(color);
             return (
               <div
-                className={`${color} selection:bg-lime-300 flex uppercase items-center justify-center w-11 h-14 dark:hover:text-black text-lg font-semibold border rounded-md cursor-default hover:bg-gray-200`}
+                className={`${color} selection:bg-lime-300 flex uppercase items-center justify-center w-7 h-10 sm:w-11 sm:h-14 dark:hover:text-black text-lg font-semibold border rounded-md cursor-default hover:bg-gray-200`}
                 key={letter.key}
               >
                 {letter.key}

@@ -10,7 +10,7 @@ export default function Home() {
   const [solution, setSolution] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3001/solutions")
+    fetch("https://busy-gold-antelope-wear.cyclic.app/solutions")
       .then((res) => res.json())
       .then((data) => {
         // random int between 0 and data.length

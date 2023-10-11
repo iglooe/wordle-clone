@@ -21,9 +21,9 @@ Then, install dependencies:
 pnpm install
 ```
 
-## Json Server setup
+## JSON Server setup
 
-This frontend relies on a JSON server to pull words from. To run the server do the following:
+The frontend relies on a JSON server to pull words from. To run the server do the following:
 
 ```bash
 json-server ./data/db.json --port 3001

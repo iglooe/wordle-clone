@@ -1,12 +1,12 @@
 import React from "react";
-
+import { Github } from "lucide-react";
 import Link from "next/link";
+
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Github } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
