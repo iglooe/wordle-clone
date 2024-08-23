@@ -46,15 +46,15 @@ export default function Keypad({ usedKeys, handleKeyUp }) {
           <div key={rowIndex} className="flex flex-wrap justify-center mb-2">
             {row.map((key) => (
               <Button
+                size="sm"
                 key={key}
                 variant="outline"
                 className={`m-0.5 text-base sm:text-lg md:text-xl font-semibold
                   ${
                     key === "ENTER" || key === "⌫"
-                      ? "px-2 sm:px-3 md:px-4 py-4 sm:py-5 md:py-6"
+                      ? "px-1 sm:px-3 md:px-4 py-4 sm:py-5 md:py-6"
                       : "w-8 h-12 sm:w-10 sm:h-14 md:w-12 md:h-16 lg:w-14 lg:h-18"
                   }
-                  
                  ${getKeyColor(key)}`}
                 onClick={() => handleKeyboardButtonClick(key)}
               >

@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import Menu from "@/components/menu";
+import Menu from "@/components/ui/menu";
 import { Separator } from "@/components/ui/separator";
 import { ModeToggle } from "@/components/ui/mode-toggle";
 

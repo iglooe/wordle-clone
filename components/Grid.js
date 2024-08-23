@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function WordleGrid({ currentGuess, turn, guesses }) {
   const emptyCell = (
     <div className="block w-[60px] h-[60px] md:w-[72px] md:h-[72px] border border-zinc-500/45 m-2 text-center uppercase bold text-5xl"></div>
@@ -42,6 +44,24 @@ export default function WordleGrid({ currentGuess, turn, guesses }) {
             // Empty row
             [...Array(5)].map((_, index) => emptyCell)
           )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export function EmptyGrid() {
+  const emptyCell = (
+    <div className="block w-[60px] h-[60px] md:w-[72px] md:h-[72px] border border-zinc-500/45 m-2 text-center uppercase bold text-5xl"></div>
+  );
+
+  return (
+    <div className="pt-4">
+      {[...Array(6)].map((_, rowIndex) => (
+        <div key={rowIndex} className="flex justify-center text-center">
+          {[...Array(5)].map((_, colIndex) => (
+            <React.Fragment key={colIndex}>{emptyCell}</React.Fragment>
+          ))}
         </div>
       ))}
     </div>
