@@ -10,14 +10,18 @@ export default function Home() {
   const [solution, setSolution] = useState(null);
 
   useEffect(() => {
-    fetch("https://busy-gold-antelope-wear.cyclic.app/solutions")
+    fetch("https://iglooe.github.io/wordle-json/db.json")
       .then((res) => res.json())
       .then((data) => {
-        // random int between 0 and data.length
-        const randomIndex = data[Math.floor(Math.random() * data.length)];
-        setSolution(randomIndex.word);
+        console.log(data);
+        // Access the solutions array
+        const solutions = data.solutions;
+        // Get a random solution from the array
+        const randomSolution =
+          solutions[Math.floor(Math.random() * solutions.length)];
+        setSolution(randomSolution.word);
       });
-  }, [setSolution]);
+  }, []);
 
   return (
     <>

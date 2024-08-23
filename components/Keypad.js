@@ -4,10 +4,11 @@ export default function Keypad({ usedKeys }) {
   const [letters, setLetters] = useState(null);
 
   useEffect(() => {
-    fetch("https://busy-gold-antelope-wear.cyclic.app/letters")
+    fetch("https://iglooe.github.io/wordle-json/db.json")
       .then((res) => res.json())
       .then((json) => {
-        setLetters(json);
+        // Extract the letters array from the json
+        setLetters(json.letters);
       });
   }, []);
 
