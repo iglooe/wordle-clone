@@ -2,11 +2,11 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{js,jsx}',
-    './components/**/*.{js,jsx}',
-    './app/**/*.{js,jsx}',
-    './src/**/*.{js,jsx}',
-	],
+    "./pages/**/*.{js,jsx}",
+    "./components/**/*.{js,jsx}",
+    "./app/**/*.{js,jsx}",
+    "./src/**/*.{js,jsx}",
+  ],
   theme: {
     container: {
       center: true,
@@ -57,6 +57,25 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        flip: {
+          "0%": { transform: "rotateX(0)", backgroundColor: "transparent" },
+          "50%": {
+            transform: "rotateX(90deg)",
+            backgroundColor: "transparent",
+          },
+          "100%": { transform: "rotateX(0)" },
+        },
+        wiggle: {
+          "0%, 100%": {
+            transform: "translateX(0%)",
+            transformOrigin: "50% 50%",
+          },
+          "15%": { transform: "translateX(-6px) rotate(-6deg)" },
+          "30%": { transform: "translateX(9px) rotate(6deg)" },
+          "45%": { transform: "translateX(-9px) rotate(-3.6deg)" },
+          "60%": { transform: "translateX(3px) rotate(2.4deg)" },
+          "75%": { transform: "translateX(-2px) rotate(-1.2deg)" },
+        },
         "accordion-down": {
           from: { height: 0 },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -69,8 +88,10 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        flip: "flip 0.5s ease-out",
+        wiggle: "wiggle 0.2s both",
       },
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};

@@ -13,10 +13,7 @@ export default function Home() {
     fetch("https://iglooe.github.io/wordle-json/db.json")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        // Access the solutions array
         const solutions = data.solutions;
-        // Get a random solution from the array
         const randomSolution =
           solutions[Math.floor(Math.random() * solutions.length)];
         setSolution(randomSolution.word);
@@ -27,7 +24,20 @@ export default function Home() {
     <>
       <MainNav />
       <Toaster position="top-center" richColors />
-      <div className="p-4">{solution && <Wordle solution={solution} />}</div>
+      <ShowSolution solution={solution} />
+      {solution && <Wordle solution={solution} />}
     </>
+  );
+}
+
+function ShowSolution({ solution }) {
+  if (process.env.NODE_ENV === "production") return null;
+
+  return (
+    <div className="w-full flex justify-center pt-4">
+      <div className="">
+        solution: <span className="font-bold uppercase">{solution}</span>
+      </div>
+    </div>
   );
 }

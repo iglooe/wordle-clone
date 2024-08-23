@@ -41,21 +41,6 @@
   animation: bounce 0.2s ease-in-out forwards;
 }
 
-@keyframes flip {
-  0% {
-    transform: rotateX(0deg);
-  }
-  45% {
-    transform: rotateX(90deg);
-  }
-  55% {
-    transform: rotateX(90deg);
-  }
-  100% {
-    transform: rotateX(0deg);
-  }
-}
-
 @keyframes bounce {
   0% {
     transform: scale(1);

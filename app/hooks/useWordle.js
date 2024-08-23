@@ -6,41 +6,33 @@ import { toast } from "sonner";
 const useWordle = (solution) => {
   const [turn, setTurn] = useState(0);
   const [currentGuess, setCurrentGuess] = useState("");
-  const [guesses, setGuesses] = useState([...Array(6)]); // each guess is an array
-  const [history, setHistory] = useState(["ninja"]); // each guess is a string
+  const [guesses, setGuesses] = useState(Array(6).fill(null)); // each guess is an array
+  const [history, setHistory] = useState([]); // each guess is a string
   const [isCorrect, setIsCorrect] = useState(false);
   const [usedKeys, setUsedKeys] = useState({});
 
-  //format guess into an array of letter objects
-  //e.g. [{key: 'a', color: 'yellow'}]
+  // Format guess into an array of letter objects with color
+  // e.g. [{key: 'a', color: 'yellow'}]
   const formatGuess = () => {
-    let solutionArray = [...solution];
-    let formattedGuess = [...currentGuess].map((letter) => {
-      return { key: letter, color: "gray" };
-    });
-
-    // find green letters
-    formattedGuess.forEach((letter, index) => {
-      if (letter.key === solutionArray[index]) {
-        formattedGuess[index].color = "green";
-        solutionArray[index] = null;
-      }
-    });
-
-    // find yellow letters
-    formattedGuess.forEach((letter, index) => {
-      if (solutionArray.includes(letter.key) && letter.color !== "green") {
-        formattedGuess[index].color = "yellow";
-        solutionArray[solutionArray.indexOf(letter.key)] = null;
-      }
-    });
-
-    return formattedGuess;
+    const solutionArray = [...solution];
+    return [...currentGuess]
+      .map((letter, index) => {
+        if (letter === solutionArray[index]) {
+          solutionArray[index] = null;
+          return { key: letter, color: "green" };
+        }
+        return { key: letter, color: "gray" };
+      })
+      .map((letter) => {
+        if (letter.color === "gray" && solutionArray.includes(letter.key)) {
+          solutionArray[solutionArray.indexOf(letter.key)] = null;
+          return { ...letter, color: "yellow" };
+        }
+        return letter;
+      });
   };
 
-  // add new guess to the guesses state
-  // update the icCorrect state if the guess is correct
-  // add one to the turn state
+  // add new guess and update game state
   const addNewGuess = (formattedGuess) => {
     if (currentGuess === solution) {
       setIsCorrect(true);
@@ -55,68 +47,38 @@ const useWordle = (solution) => {
     setHistory((prev) => [...prev, currentGuess]);
     setTurn((n) => n + 1);
     setCurrentGuess("");
-    setUsedKeys((prevUsedKeys) => {
-      let newKeys = { ...prevUsedKeys };
 
-      formattedGuess.forEach((letter) => {
-        const currentColor = newKeys[letter.key];
-        if (letter.color === "green") {
-          newKeys[letter.key] = "green";
-          return;
-        }
-        if (letter.color === "yellow" && currentColor !== "green") {
-          newKeys[letter.key] = "yellow";
-          return;
-        }
+    // update used keys
+    setUsedKeys((prev) => {
+      const newKeys = { ...prev };
+      formattedGuess.forEach(({ key, color }) => {
+        const currentColor = newKeys[key];
         if (
-          letter.color === "gray" &&
-          currentColor !== "green" &&
-          currentColor !== "yellow"
+          color === "green" ||
+          (color === "yellow" && currentColor !== "green") ||
+          (!currentColor && color === "gray")
         ) {
-          newKeys[letter.key] = "gray";
-          return;
+          newKeys[key] = color;
         }
       });
       return newKeys;
     });
   };
 
-  //handle keyup even & track current guess
-  // if user presses enter, add the new guess
+  // handle keyup event for game input
   const handleKeyUp = ({ key }) => {
-    const isLetter = /^[A-Za-z]$/;
-
-    if (isLetter.test(key)) {
-      if (currentGuess.length < 5) {
-        setCurrentGuess((prev) => prev + key);
-      }
-    }
-
-    if (key === "Backspace") {
+    if (/^[A-Za-z]$/.test(key) && currentGuess.length < 5) {
+      setCurrentGuess((prev) => prev + key);
+    } else if (key === "Backspace") {
       setCurrentGuess((prev) => prev.slice(0, -1));
-    }
-
-    if (key === "Enter") {
-      // no turns past 5
-      if (turn > 5) {
-        toast("Refresh to play again!");
-        return;
-      }
-
-      // do not allow duplicate guesses
+    } else if (key === "Enter") {
       if (history.includes(currentGuess)) {
         toast.error("You already guessed that!");
-        return;
-      }
-
-      // do not allow guesses that are not 5 letters
-      if (currentGuess.length !== 5) {
+      } else if (currentGuess.length !== 5) {
         toast.error("Guess must be 5 letters!");
-        return;
+      } else {
+        addNewGuess(formatGuess());
       }
-
-      const formatted = formatGuess();
-      addNewGuess(formatted);
     }
   };
 
