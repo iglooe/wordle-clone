@@ -7,7 +7,7 @@ import Keypad from "@/components/Keypad";
 import { Button } from "@/components/ui/button";
 
 export default function Wordle({ solution }) {
-  const { currentGuess, handleKeyUp, guesses, turn, usedKeys } =
+  const { currentGuess, handleKeyUp, guesses, turn, usedKeys, isCorrect } =
     useWordle(solution);
 
   useEffect(() => {
@@ -19,18 +19,26 @@ export default function Wordle({ solution }) {
     <>
       <WordleGrid currentGuess={currentGuess} turn={turn} guesses={guesses} />
       <Keypad usedKeys={usedKeys} handleKeyUp={handleKeyUp} />
-      {turn > 5 && <GameOver solution={solution} />}
+      {(turn > 5 || isCorrect) && (
+        <GameOver solution={solution} isWinner={isCorrect} />
+      )}
     </>
   );
 }
 
-function GameOver({ solution }) {
+function GameOver({ solution, isWinner }) {
   return (
     <div className="grid min-h-full place-items-center">
       <div className="text-center">
-        <p className="scroll-m-20 text-2xl font-semibold tracking-tight">
-          The word was:
-        </p>
+        {isWinner ? (
+          <p className="scroll-m-20 text-2xl font-semibold tracking-tight">
+            Congratulations! You guessed the word:
+          </p>
+        ) : (
+          <p className="scroll-m-20 text-2xl font-semibold tracking-tight">
+            The word was:
+          </p>
+        )}
         <h1 className="mt-4 text-3xl font-medium tracking-wide text-primary sm:text-5xl">
           <span className="uppercase text-bold">{solution}</span>
         </h1>

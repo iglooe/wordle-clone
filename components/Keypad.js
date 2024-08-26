@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Button } from "./ui/button";
 
 export default function Keypad({ usedKeys, handleKeyUp }) {
@@ -24,10 +25,6 @@ export default function Keypad({ usedKeys, handleKeyUp }) {
   };
 
   const handleKeyboardButtonClick = (key) => {
-    if (typeof handleKeyUp !== "function") {
-      console.error("handleKeyUp is not a function");
-      return;
-    }
     let keyEvent;
     if (key === "ENTER") {
       keyEvent = { key: "Enter" };
@@ -40,7 +37,7 @@ export default function Keypad({ usedKeys, handleKeyUp }) {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-4">
+    <div className="flex flex-col items-center justify-center py-4">
       <div className="w-full max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl">
         {QWERTY.map((row, rowIndex) => (
           <div key={rowIndex} className="flex flex-wrap justify-center mb-2">
@@ -52,8 +49,8 @@ export default function Keypad({ usedKeys, handleKeyUp }) {
                 className={`m-0.5 text-base sm:text-lg md:text-xl font-semibold
                   ${
                     key === "ENTER" || key === "⌫"
-                      ? "px-1 sm:px-3 md:px-4 py-4 sm:py-5 md:py-6"
-                      : "w-8 h-12 sm:w-10 sm:h-14 md:w-12 md:h-16 lg:w-14 lg:h-18"
+                      ? "px-0.5 sm:px-1 md:px-2 py-2 sm:py-3 md:py-5"
+                      : "w-6 h-10 sm:w-8 sm:h-12 md:w-10 md:h-14 lg:w-11 lg:h-15"
                   }
                  ${getKeyColor(key)}`}
                 onClick={() => handleKeyboardButtonClick(key)}

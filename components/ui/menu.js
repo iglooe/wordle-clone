@@ -34,15 +34,15 @@ function MenuIcon() {
 export default function Menu() {
   return (
     <Popover>
-      <PopoverTrigger className="p-2 hover:border hover:rounded-full">
+      <PopoverTrigger className="p-2 hover:bg-accent rounded-md border">
         <MenuIcon />
       </PopoverTrigger>
       <PopoverContent>
         <div className="text-2xl font-bold text-current cursor-default selection:text-black dark:selection:text-white selection:bg-lime-500">
           About
         </div>
-        <div className="pt-4 text-sm">
-          <Separator />
+        <div className="text-sm">
+          <Separator className="my-1" />
           <div className="pt-2 pb-3 selection:bg-lime-500">
             <p className="pb-2 tracking-tightest">
               <span className="font-bold">Birdle</span> is an open-source Wordle
@@ -57,19 +57,14 @@ export default function Menu() {
               </Link>
               .
             </p>
-            <p className="tracking-tightest">
-              Join me in the world of words, challenge your vocabulary, and have
-              fun guessing the hidden word in my take on the classic game
-              Wordle!
-            </p>
           </div>
           {/* <Separator className="mb-2" /> */}
           <div className="text-2xl font-bold text-current cursor-default selection:bg-lime-500 selection:text-black dark:selection:text-white">
             Tech Stack Used
           </div>
-          <div className="pt-4">
-            <Separator />
-            <div className="pt-4 pl-4 selection:bg-lime-500">
+          <div>
+            <Separator className="my-1" />
+            <div className="pt-2 pl-4 selection:bg-lime-500">
               <ul className="list-disc">
                 <li className="pb-1">
                   <Link
@@ -129,8 +124,7 @@ export default function Menu() {
             </div>
           </div>
 
-          <Separator className="mt-2" />
-          <div className="flex items-center pt-1 text-sm leading-loose text-left text-muted-foreground selection-text-black dark:selection:text-white selection:bg-lime-500">
+          <div className="flex items-center pt-3 text-sm leading-loose text-left text-muted-foreground selection-text-black dark:selection:text-white selection:bg-lime-500">
             Built by{" "}
             <Link
               href="https://github.com/iglooe"

@@ -2,12 +2,12 @@ import React from "react";
 
 export default function WordleGrid({ currentGuess, turn, guesses }) {
   const emptyCell = (
-    <div className="block w-[60px] h-[60px] md:w-[72px] md:h-[72px] border border-zinc-500/45 m-2 text-center uppercase bold text-5xl"></div>
+    <div className="block w-[60px] h-[60px] md:w-[72px] md:h-[72px] border border-zinc-500/60 dark:border-muted m-2 text-center uppercase bold text-5xl"></div>
   );
 
   const renderCell = (content, color, colIndex) => (
     <div
-      className={`${color} dark:text-white block items-center pt-3 w-[60px] h-[60px] md:w-[72px] md:h-[72px] border border-zinc-500 m-2 text-center uppercase font-semibold text-4xl md:text-5xl ${
+      className={`${color} dark:text-white block items-center pt-3 w-[60px] h-[60px] md:w-[72px] md:h-[72px] border border-zinc-950 m-2 text-center uppercase font-semibold text-4xl md:text-5xl ${
         color ? "text-zinc-950/75" : "text-zinc-700"
       } animate-wiggle`}
       style={{ animationDelay: `${colIndex * 0.1}s` }}
@@ -17,7 +17,7 @@ export default function WordleGrid({ currentGuess, turn, guesses }) {
   );
 
   return (
-    <div className="pt-4">
+    <div>
       {guesses.map((guess, rowIndex) => (
         <div key={rowIndex} className="flex justify-center text-center">
           {turn === rowIndex ? (
@@ -52,7 +52,7 @@ export default function WordleGrid({ currentGuess, turn, guesses }) {
 
 export function EmptyGrid() {
   const emptyCell = (
-    <div className="block w-[60px] h-[60px] md:w-[72px] md:h-[72px] border border-zinc-500/45 m-2 text-center uppercase bold text-5xl"></div>
+    <div className="max-w-2xl block w-[60px] h-[60px] md:w-[72px] md:h-[72px] border border-zinc-500/60 m-2 text-center uppercase bold text-5xl"></div>
   );
 
   return (

@@ -7,10 +7,18 @@ import { useState } from "react";
 import Wordle from "@/components/Wordle";
 import { getRandomSolution, ShowSolution } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+
 import { EmptyGrid } from "./Grid";
+import { Shell } from "./ui/shell";
+import Timer from "./Timer";
 
 export default function Game() {
   const [isGameStarted, setIsGameStarted] = useState(false);
+
+  const handleStartGame = () => {
+    setIsGameStarted(true);
+    refetch();
+  };
 
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ["wordle"],
@@ -23,20 +31,15 @@ export default function Game() {
 
   const solution = data ? getRandomSolution(data.solutions) : null;
 
-  const handleStartGame = () => {
-    setIsGameStarted(true);
-    refetch();
-  };
-
-  if (isLoading) return "Loading...";
+  if (isLoading) return <EmptyGrid />;
   if (error) return "An error has occurred: " + error.message;
 
   return (
     <>
-      {!isGameStarted ? (
-        <div className="flex justify-center flex-col">
-          <EmptyGrid />
-          <div className="mt-10 flex items-center justify-center gap-x-6">
+      <Shell variant="centered">
+        {!isGameStarted ? (
+          <>
+            <EmptyGrid />
             <Button
               size="lg"
               className="text-xl uppercase"
@@ -44,14 +47,19 @@ export default function Game() {
             >
               Start
             </Button>
-          </div>
-        </div>
-      ) : (
-        <>
-          <ShowSolution solution={solution} />
-          {solution && <Wordle solution={solution} />}
-        </>
-      )}
+          </>
+        ) : (
+          <>
+            <ShowSolution solution={solution} />
+            {solution && (
+              <>
+                <Timer />
+                <Wordle solution={solution} onWin={() => setIsWinner(true)} />
+              </>
+            )}
+          </>
+        )}
+      </Shell>
     </>
   );
 }
